@@ -1,0 +1,55 @@
+.desk { padding-block: 2.5rem 4rem; min-height:75vh; }
+.desk-intro { display:grid; grid-template-columns:1fr 30%; min-height:190px; border:1px solid #d6dece; border-radius:6px; overflow:hidden; background:#edf1e5; }
+.desk-intro>div { align-self:center; padding:clamp(1.3rem,3.8vw,3.5rem); }
+.desk-intro img { width:100%; height:100%; max-height:240px; object-fit:cover; object-position:center 45%; }
+.desk-byline { color:#5d7257; font:italic 1.35rem/1.4 var(--serif); margin-bottom:.4rem; }
+.desk-intro h1 { font-size:clamp(2.2rem,4.2vw,4rem); }
+.desk-lead { margin-top:.8rem; color:var(--secondary); }
+.desk-toolbar,.shelves,.desk-actions,.filters,.dialog-actions,.entry-actions { display:flex; flex-wrap:wrap; align-items:center; gap:.55rem; }
+.desk-toolbar { justify-content:space-between; margin:2rem 0 1.3rem; gap:1rem; border-bottom:1px solid var(--line); padding-bottom:1rem; }
+.desk button,.desk-dialog button,.entry-link { border:1px solid #bdc8b6; background:transparent; padding:.48rem .95rem; border-radius:4px; line-height:1.55; }
+.shelves { gap:.25rem; }
+.shelves button { background:transparent; border-color:transparent; font-weight:600; }
+.shelves button[aria-pressed="true"] { color:#234d32; background:#e3eadb; }
+.desk button.filled,.desk-dialog button.filled { color:white; background:#2f513b; border-color:#2f513b; }
+.desk button:hover,.desk-dialog button:hover,.entry-link:hover { border-color:#557553; }
+.desk-dialog button:disabled { opacity:.5; cursor:default; }
+.filters { align-items:flex-end; gap:.8rem; }
+.filters label,.desk-dialog label { display:grid; gap:.3rem; font-size:.94rem; }
+.filters label { color:var(--secondary); }
+.search-field { width:min(100%, 31rem); }
+input,select,textarea { color:var(--ink); background:#fffef9; border:1px solid #bec7b6; border-radius:4px; padding:.6rem .75rem; font:inherit; font-size:1rem; min-width:0; }
+select { appearance:none; padding-right:2.3rem; background-image:linear-gradient(45deg,transparent 50%,#52674f 50%),linear-gradient(135deg,#52674f 50%,transparent 50%); background-position:calc(100% - 16px) 51%,calc(100% - 11px) 51%; background-size:5px 5px; background-repeat:no-repeat; }
+textarea { resize:vertical; }
+input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible { outline:2px solid #487b69; outline-offset:2px; }
+.storage-note { margin:1rem 0; font-size:.9rem; color:var(--secondary); }
+.feedback { color:#365f42; font-size:.95rem; }
+.feedback:not(:empty) { margin:.75rem 0; }
+.entry-list { display:grid; gap:.7rem; }
+.entry { background:#fffef9; border:1px solid var(--line); border-radius:4px; }
+.entry summary { cursor:pointer; padding:1rem 1.2rem; overflow-wrap:anywhere; }
+.entry summary strong { font:600 1.18rem/1.6 var(--serif); }
+.entry summary span { margin-left:.75rem; color:var(--secondary); font-size:.88rem; }
+.entry-details { padding:0 1.2rem 1.2rem; }
+.entry-details p { white-space:pre-wrap; overflow-wrap:anywhere; color:var(--secondary); }
+.entry-actions { margin-top:1rem; }
+.entry-actions button,.entry-link { font-size:.9rem; }
+.entry-link { color:#264e33; background:#ecf0e5; }
+.empty { padding:2rem 1rem; text-align:center; color:var(--secondary); border:1px dashed #b9c1aa; }
+.desk-dialog { margin:auto; width:min(94vw,530px); max-height:91dvh; padding:clamp(1rem,3vw,2rem); border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); }
+.desk-dialog::backdrop { background:#11291fc4; }
+body:has(.desk-dialog[open]) { overflow:hidden; }
+.desk-dialog h2 { font-size:1.65rem; margin-bottom:1rem; }
+.desk-dialog label { margin:.7rem 0; }
+.desk-dialog [hidden],.filters [hidden] { display:none; }
+.dialog-actions { justify-content:flex-end; margin-top:1.25rem; }
+#export-options { margin-block:.75rem; max-height:42vh; overflow:auto; }
+#export-options label { display:flex; align-items:baseline; gap:.65rem; overflow-wrap:anywhere; }
+@media (max-width:670px) {
+  .desk { padding-top:1.25rem; }
+  .desk-intro { grid-template-columns:1fr 24%; }
+  .desk-intro img { max-height:none; }
+  .desk-toolbar { margin-top:1.2rem; }
+  .search-field { flex:1 1 12rem; }
+  .shelves button { padding-inline:.65rem; }
+}

@@ -1,0 +1,94 @@
+/* Optical loupe revealed on artwork the visitor can open. */
+:is(.work-link,.open-work,.art-card,.cover-link) {position:relative}
+:is(.work-link,.open-work,.art-card,.cover-link)::after {
+  content:"";
+  position:absolute;
+  top:.7rem;
+  right:.7rem;
+  width:2.1rem;
+  height:2.1rem;
+  pointer-events:none;
+  border:1px solid #fcfcf6b0;
+  border-radius:8px;
+  box-shadow:0 2px 0 #163b2bb0,0 4px 10px #16261f42;
+  background:
+    radial-gradient(circle at 44% 42%,transparent 0 4px,#2c4838 4.6px 6.2px,transparent 6.8px),
+    linear-gradient(45deg,transparent 35%,#2c4838 36% 65%,transparent 66%) 63% 63%/7px 7px no-repeat,
+    #fcfbebf5;
+  opacity:0;
+  transform:translateY(4px) scale(.87);
+  transition:opacity 140ms,transform 210ms cubic-bezier(.16,.85,.27,1.18);
+}
+:is(.work-link,.open-work,.art-card,.cover-link):focus-visible::after {opacity:1;transform:none}
+@media (hover:hover) and (pointer:fine) {
+  :is(.work-link,.open-work,.art-card,.cover-link):hover::after {opacity:1;transform:none}
+}
+.viewer-image {
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  display:grid;
+  place-items:center;
+  height:min(67dvh,790px);
+  touch-action:pan-y pinch-zoom;
+}
+.viewer-image img, #work-view .viewer-image img {width:100%;height:100%}
+.viewer-image img[hidden],.viewer .art-retry[hidden],.viewer .art-filmstrip[hidden] {display:none}
+.viewer-image[aria-busy=true] > img {opacity:.55}
+.viewer-image[aria-busy=true]::after {
+  content:"";
+  position:absolute;
+  right:1rem;
+  bottom:.8rem;
+  width:1.15rem;
+  aspect-ratio:1;
+  border:3px solid #ffffef;
+  border-right-color:#43694a;
+  border-radius:100%;
+  box-shadow:0 0 0 1px #45644155;
+  animation:art-load 750ms linear infinite;
+  pointer-events:none;
+}
+@keyframes art-load {to {transform:rotate(360deg)}}
+.viewer .art-retry {background:var(--paper)}
+.viewer .viewer-controls {border-top:1px solid var(--line);padding:.7rem 1rem}
+.art-navigation {display:flex;align-items:center;justify-content:center;gap:.9rem;min-width:0}
+.art-filmstrip {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:3px;
+  border-radius:5px;
+  padding:4px;
+  background:#e4e8d9;
+  box-shadow:inset 0 1px 2px #30433629;
+}
+.viewer button.art-thumb {
+  display:grid;
+  place-items:center;
+  width:clamp(34px,5vw,48px);
+  height:34px;
+  padding:2px;
+  background:transparent;
+  border:2px solid transparent;
+  border-radius:3px;
+  transition:border-color 130ms ease, background-color 130ms ease;
+}
+.viewer button.art-thumb[aria-pressed=true] {border-color:#36573f;background:#fffef5}
+.viewer button.art-thumb:hover,.viewer button.art-thumb:focus-visible {border-color:#63805c}
+.viewer .art-thumb img {width:100%;height:100%;min-width:0;min-height:0;object-fit:cover;border-radius:1px}
+.viewer .viewer-controls button:disabled {opacity:.45;cursor:default}
+.viewer .art-navigation > span {white-space:nowrap;font-variant-numeric:tabular-nums;color:#495d4d}
+@media (max-width:570px) {
+  .viewer .viewer-controls {display:grid;grid-template-columns:auto 1fr auto;gap:.45rem .7rem;padding:.55rem .8rem}
+  .art-navigation {display:contents}
+  .art-filmstrip {grid-column:1/-1;grid-row:1;justify-self:center}
+  .viewer .art-navigation > span {grid-column:2;grid-row:2;justify-self:center}
+  .viewer .viewer-controls > button {grid-row:2}
+  .viewer .viewer-controls > button:last-child {grid-column:3}
+  .viewer-image {height:min(59dvh,650px)}
+}
+@media (prefers-reduced-motion:reduce) {
+  :is(.work-link,.open-work,.art-card,.cover-link)::after {transition:none;transform:none}
+  .viewer-image[aria-busy=true]::after {animation:none}
+}

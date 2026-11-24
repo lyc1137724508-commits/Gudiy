@@ -1,0 +1,40 @@
+.notebook-byline-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(.45rem, 2vw, 1.35rem);
+  margin-bottom: .25rem;
+}
+.notebook-byline-row .desk-byline { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+.desk .paper-fold {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 54px;
+  width: 54px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.desk .paper-fold[hidden] { display: none; }
+.desk .paper-fold:is(:hover, :active) { background: transparent; box-shadow: none; transform: none; }
+.desk .paper-fold:focus-visible { outline: 2px solid var(--secondary); outline-offset: 1px; }
+.paper-fold canvas {
+  width: 58px;
+  height: auto;
+  pointer-events: none;
+  transform-origin: 50% 55%;
+  filter: drop-shadow(0 2px 1px #5e513a40);
+}
+.paper-fold[data-flying] canvas { position: relative; z-index: 1; }
+@media (forced-colors: active) {
+  .paper-fold canvas { background: Canvas; border-radius: 4px; }
+}
+@media print {
+  .desk .paper-fold { display: none; }
+}

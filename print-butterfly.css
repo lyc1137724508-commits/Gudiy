@@ -1,0 +1,63 @@
+.paper-butterfly {
+  position:absolute;
+  z-index:2;
+  top:-.53rem;
+  left:9%;
+  width:clamp(27px,4.4vw,42px);
+  aspect-ratio:1.4;
+  pointer-events:none;
+  transform:rotate(-17deg);
+  transform-origin:53% 72%;
+  filter:drop-shadow(1px 2px 1px #583c2640);
+  background:
+    linear-gradient(62deg, transparent 37%, #785140 41% 54%, transparent 58%) 44% 12% / 12% 28% no-repeat,
+    linear-gradient(-62deg, transparent 37%, #785140 41% 54%, transparent 58%) 53% 12% / 12% 28% no-repeat,
+    radial-gradient(ellipse, #795238 45%, transparent 55%) center 65% / 14% 65% no-repeat;
+}
+.paper-butterfly::before,.paper-butterfly::after {
+  content:"";
+  position:absolute;
+  top:9%;
+  width:48%;
+  height:85%;
+  transition:transform .24s cubic-bezier(.18,.8,.25,1);
+}
+.paper-butterfly::before {
+  left:2%;
+  transform-origin:100% 65%;
+  transform:perspective(45px) rotateY(-39deg);
+  clip-path:polygon(0 2%,63% 14%,100% 62%,74% 98%,34% 82%,44% 58%,19% 43%);
+  background:conic-gradient(from 190deg at 100% 62%,#c87d48 0deg 66deg,#e69c57 67deg 94deg,#f6c879 95deg 124deg,#ae6c48 125deg);
+}
+.paper-butterfly::after {
+  right:2%;
+  transform-origin:0 65%;
+  transform:perspective(45px) rotateY(57deg);
+  clip-path:polygon(100% 0,37% 14%,0 62%,27% 98%,65% 82%,56% 58%,83% 43%);
+  background:conic-gradient(from 24deg at 0 62%,#fbd68d 0deg 48deg,#e7a051 49deg 82deg,#ca8052 83deg 160deg,#e9ac69 161deg);
+}
+.hero-art:has(.cover-link:focus-visible) .paper-butterfly::before,
+.paper-butterfly.alighting::before {transform:perspective(45px) rotateY(-4deg)}
+.hero-art:has(.cover-link:focus-visible) .paper-butterfly::after,
+.paper-butterfly.alighting::after {transform:perspective(45px) rotateY(8deg)}
+@media (hover:hover) {
+  .hero-art:hover .paper-butterfly::before {transform:perspective(45px) rotateY(-4deg)}
+  .hero-art:hover .paper-butterfly::after {transform:perspective(45px) rotateY(8deg)}
+}
+@media (prefers-reduced-motion:no-preference) {
+  .paper-butterfly.alighting { animation:butterfly-land .68s ease-out both; }
+  .paper-butterfly.alighting::after { animation:butterfly-wing .22s ease-in-out 2; }
+  @keyframes butterfly-land {
+    0% {transform:translate(-13px,-12px) rotate(-37deg) scale(.94)}
+    46% {transform:translate(-6px,-16px) rotate(-11deg)}
+    85% {transform:translate(1px,0) rotate(-14deg)}
+    100% {transform:rotate(-17deg)}
+  }
+  @keyframes butterfly-wing {
+    0%,100% {transform:perspective(45px) rotateY(8deg)}
+    50% {transform:perspective(45px) rotateY(62deg)}
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .paper-butterfly::before,.paper-butterfly::after {transition:none;}
+}

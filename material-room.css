@@ -1,0 +1,227 @@
+/* One ambient light rig is shared by the folder shell and its active document. */
+html[data-material-room="moon"] {
+  --room-key: #a4c7ff;
+  --room-fill: #748bca;
+  --room-base: #141e30;
+  --room-source: 50% 0%;
+  --room-bounce: 50% 100%;
+}
+html[data-material-room="amber"] {
+  --room-key: #ffc16a;
+  --room-fill: #ac7156;
+  --room-base: #281e15;
+  --room-source: 94% 10%;
+  --room-bounce: 6% 90%;
+}
+html[data-material-room="coral"] {
+  --room-key: #ff9397;
+  --room-fill: #bc628e;
+  --room-base: #2c1923;
+  --room-source: 94% 90%;
+  --room-bounce: 6% 10%;
+}
+html[data-material-room="orchid"] {
+  --room-key: #cca2ff;
+  --room-fill: #8077c6;
+  --room-base: #261c32;
+  --room-source: 50% 100%;
+  --room-bounce: 50% 0%;
+}
+html[data-material-room="teal"] {
+  --room-key: #75dfd2;
+  --room-fill: #578cac;
+  --room-base: #102824;
+  --room-source: 6% 90%;
+  --room-bounce: 94% 10%;
+}
+html[data-material-room="dawn"] {
+  --room-key: #f4f1d8;
+  --room-fill: #80a6b1;
+  --room-base: #222729;
+  --room-source: 6% 10%;
+  --room-bounce: 94% 90%;
+}
+
+@media screen and (forced-colors: none) {
+  html[data-material-room] {
+    color-scheme: dark;
+    --paper: var(--room-base);
+    --ink: color-mix(in srgb, var(--room-key) 17%, #fff);
+    --secondary: color-mix(in srgb, var(--room-key) 32%, #c4c9cc);
+    --line: color-mix(in srgb, var(--room-fill) 44%, var(--room-base));
+    --room-edge: color-mix(in srgb, var(--room-key) 76%, var(--room-base));
+    --room-well: color-mix(in srgb, var(--room-base) 62%, #080a0e);
+    --room-panel: color-mix(in srgb, var(--room-fill) 11%, var(--room-base));
+    --room-active: color-mix(in srgb, var(--room-key) 17%, var(--room-base));
+    --room-glow:
+      radial-gradient(ellipse 85% 72% at var(--room-source), color-mix(in srgb, var(--room-key) 17%, transparent), transparent 83%),
+      radial-gradient(ellipse 76% 75% at var(--room-bounce), color-mix(in srgb, var(--room-fill) 10%, transparent), transparent 87%);
+    color: var(--ink);
+    background: var(--room-well);
+    accent-color: var(--room-key);
+    scrollbar-color: var(--room-edge) var(--room-base);
+  }
+
+  html[data-material-room] body,
+  html[data-material-room] .folder-stack {
+    background: var(--room-glow) var(--room-base);
+    color: var(--ink);
+  }
+  html.folder-desktop[data-material-room] body {
+    background: var(--room-glow) var(--room-well);
+  }
+  html.folder-embedded[data-material-room] body {
+    background-attachment: fixed;
+  }
+  html[data-material-room] .folder-stack {
+    border-color: var(--line);
+    box-shadow: 0 9px 32px #0005;
+  }
+  html[data-material-room] .folder-tabs {
+    scrollbar-color: var(--room-edge) transparent;
+  }
+  html[data-material-room] .folder-tabs::-webkit-scrollbar-thumb { background: var(--room-edge); }
+  html[data-material-room] .folder-tabs .folder-tab { color: var(--secondary); }
+  html[data-material-room] .folder-tabs .folder-tab::before {
+    background: var(--room-panel);
+    border-color: var(--line);
+    box-shadow: inset 0 1px color-mix(in srgb, var(--room-fill) 20%, transparent);
+  }
+  html[data-material-room] .folder-tabs .folder-tab:is(:hover, [aria-selected="true"]) {
+    color: var(--room-key);
+  }
+  html[data-material-room] .folder-tabs .folder-tab[aria-selected="true"]::before {
+    background: var(--room-active);
+    border-color: var(--room-edge);
+    border-bottom-color: var(--room-active);
+    box-shadow: inset 0 2px var(--room-key);
+  }
+  html[data-material-room] .folder-tabs .folder-tab[data-page][aria-selected="true"] .folder-tab-icon {
+    color: var(--room-key);
+    background: currentColor;
+    mask: var(--tab-icon) center / contain no-repeat;
+  }
+  html[data-material-room] .folder-tab:focus-visible .folder-tab-label {
+    outline-color: var(--room-key);
+  }
+  html[data-material-room] .wordmark span,
+  html[data-material-room] .feedback { color: var(--room-key); }
+  html[data-material-room] .sprout::before,
+  html[data-material-room] .sprout::after { background: var(--room-key); }
+
+  html[data-material-room] :is(.desk-byline, .result-count, .folder-network, .art-label span,
+      .viewer .art-navigation > span, .pe-status, .backup-progress) {
+    color: var(--secondary);
+  }
+  html[data-material-room] :is(.desk-intro, .pe-header, .pe-footer, .pe-featured, .pe-featured-card, .art-filmstrip) {
+    background: var(--room-panel);
+    border-color: var(--line);
+  }
+  html[data-material-room] :is(.art-crop, .work-cover, .pe-preview, .viewer-image, .folio-cover img) {
+    background: var(--room-well);
+  }
+  html[data-material-room] :is(.desk-dialog, .page-editor-dialog, .viewer) {
+    color: var(--ink);
+    background: var(--room-glow) var(--room-base);
+    border-color: var(--room-edge);
+    box-shadow: 0 18px 80px #0009;
+  }
+  html[data-material-room] :is(.desk-dialog, .page-editor-dialog, .viewer)::backdrop {
+    background: color-mix(in srgb, var(--room-base) 24%, #050609d6);
+  }
+
+  html[data-material-room] :is(.folder-tool, .folder-auth, .sound-switch, .entry-link, .skip),
+  html[data-material-room] .desk button:not(.open-work, .sphere-dial),
+  html[data-material-room] :is(.viewer, .desk-dialog, .page-editor-dialog) button:not(.sphere-dial, .art-thumb) {
+    color: var(--ink);
+    background: var(--room-panel);
+    border-color: var(--room-edge);
+    box-shadow: 0 1px 1px #0004;
+  }
+  html[data-material-room] #categories button {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  html[data-material-room] :is(.folder-tool, .folder-auth, .sound-switch):hover,
+  html[data-material-room] .desk button:not(.open-work, .sphere-dial):hover,
+  html[data-material-room] :is(.viewer, .desk-dialog, .page-editor-dialog) button:not(.sphere-dial, .art-thumb):hover,
+  html[data-material-room] #categories button:hover {
+    color: var(--ink);
+    background: var(--room-active);
+    border-color: var(--room-key);
+  }
+  html[data-material-room] #categories button[aria-pressed="true"],
+  html[data-material-room] .shelves button[aria-pressed="true"],
+  html[data-material-room] .sound-switch[aria-pressed="true"] {
+    color: var(--ink);
+    border-color: var(--room-edge);
+    background: var(--room-active);
+    box-shadow: inset 0 -2px var(--room-key);
+  }
+  html[data-material-room] .folder-tools .folder-new,
+  html[data-material-room] .desk button.filled,
+  html[data-material-room] .desk-dialog button.filled,
+  html[data-material-room] .page-editor-dialog button.pe-submit {
+    background: var(--room-key);
+    border-color: var(--room-key);
+    color: var(--room-well);
+  }
+  html[data-material-room] #work-count {
+    color: var(--room-key);
+    background: var(--room-well);
+    border-color: var(--room-edge);
+    box-shadow: inset 0 1px 2px #0006;
+  }
+  html[data-material-room] :is(input, textarea, select),
+  html[data-material-room] .pe-field :is(input, textarea),
+  html[data-material-room] :is(.feature-option, .pe-check, .pe-featured-card) input {
+    color: var(--ink);
+    background-color: var(--room-well);
+    border-color: var(--room-edge);
+    accent-color: var(--room-key);
+  }
+  html[data-material-room] :is(input, textarea)::placeholder { color: var(--secondary); }
+  html[data-material-room] select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--room-key) 50%),
+      linear-gradient(135deg, var(--room-key) 50%, transparent 50%);
+  }
+  html[data-material-room] .pe-featured-card:has(:checked),
+  html[data-material-room] .viewer button.art-thumb[aria-pressed="true"] {
+    background: var(--room-active);
+    border-color: var(--room-key);
+    box-shadow: inset 0 0 0 1px var(--room-key);
+    outline-color: var(--room-key);
+  }
+  html[data-material-room] .viewer button.art-thumb:is(:hover, :focus-visible),
+  html[data-material-room] .pe-featured-card:focus-within { border-color: var(--room-key); outline-color: var(--room-key); }
+  html[data-material-room] .page-editor-dialog button.pe-remove { color: #ffb8a6; }
+  html[data-material-room] :is(.save-stamp, .page-editor-notice) {
+    color: var(--room-well);
+    background: var(--room-key);
+    box-shadow: 0 2px 0 #0007;
+  }
+  html[data-material-room] .save-stamp::before {
+    color: var(--room-key);
+    background: var(--room-well);
+  }
+  html[data-material-room] button[aria-busy="true"]::after {
+    border-color: color-mix(in srgb, currentColor 30%, transparent);
+    border-top-color: currentColor;
+  }
+  html[data-material-room] .viewer-image[aria-busy="true"]::after {
+    border-color: var(--room-key);
+    border-right-color: var(--room-well);
+  }
+  html[data-material-room] :focus-visible {
+    outline: 2px solid var(--room-key);
+    outline-offset: 3px;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html[data-material-room] :is(.folder-tab, .folder-tool, .folder-auth, .sound-switch, .desk button, .viewer button),
+  html[data-material-room] .folder-tab::before {
+    transition: none;
+  }
+}

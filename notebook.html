@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f3">
+  <meta name="description" content="Gudiy 的个人数字手记，整理知识、工具与项目，还能导出独立展示页。">
+  <title>个人数字手记 · Gudiy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notebook.css">
+  <link rel="stylesheet" href="paper-plane.css"><script src="paper-plane.js" defer></script>
+  <link rel="stylesheet" href="interaction.css"><script src="interaction.js" defer></script>
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <script src="site-data.js" defer></script>
+<link rel="stylesheet" href="folders.css"><link rel="stylesheet" href="page-content.css">
+<link rel="stylesheet" href="companion.css">
+<script src="folders.js" defer></script><script src="companion.js" defer></script><script src="page-copy.js" defer></script><script src="page-content.js" defer></script>
+<script src="notebook.js" defer></script>
+<link rel="stylesheet" href="material-room.css">
+<link rel="icon" href="icon-192.png">
+</head>
+<body>
+  <a class="skip" href="#entries">跳到手记内容</a>
+<header id="folder-header" class="masthead">
+  <div class="container mast-inner"><a class="wordmark" href="index.html" aria-label="回到主页"><i class="sprout" aria-hidden="true"></i>Gudiy<span>.</span></a>
+  <nav aria-label="页面目录"><a href="index.html">主页</a><a href="portfolio.html">作品集</a><a href="resume.html">工作履历</a><a href="notebook.html">我的手记</a></nav></div>
+</header>
+  <main class="container desk">
+    <section class="desk-intro" aria-labelledby="desk-title" data-page-cover-layout>
+      <div><div class="notebook-byline-row"><p class="desk-byline" lang="en" data-copy="byline">Gudiy’s Notebook</p>
+        <button type="button" class="paper-fold" aria-label="折叠这张纸" hidden><canvas width="152" height="104" aria-hidden="true"></canvas></button>
+      </div><h1 id="desk-title" data-page-heading>个人数字手记</h1>
+      <p class="desk-lead" data-page-description>记下一段见闻，收藏一个工具，给新想法留一页。</p></div>
+      <img data-page-cover src="picnic.webp" alt="树荫下的野餐" width="1200" height="2400">
+    </section>
+    <section id="entries" aria-label="手记内容">
+      <div class="desk-toolbar">
+        <div class="shelves" role="group" aria-label="选择栏目">
+          <button type="button" data-shelf="notes" data-copy="notesShelf" aria-pressed="true">知识库</button>
+          <button type="button" data-shelf="tools" data-copy="toolsShelf" aria-pressed="false">工具收藏</button>
+          <button type="button" data-shelf="projects" data-copy="projectsShelf" aria-pressed="false">项目想法</button>
+        </div>
+        <div class="desk-actions"><button type="button" id="export-open" data-copy="exportLink">导出展示页</button></div>
+      </div>
+      <div class="filters">
+        <label class="search-field"><span data-copy="searchLabel">搜索</span><input id="lookup" data-copy="searchHint" data-copy-placeholder type="search" placeholder="搜索本栏标题或内容"></label>
+        <label id="topic-filter-label"><span data-copy="filterLabel">分类</span><select id="topic-filter"></select></label>
+      </div>
+      <p class="storage-note" id="storage-notice" data-copy="readHint">展开条目可阅读全文。</p>
+      <p id="desk-status" class="feedback" role="status"></p>
+      <div id="entry-list" class="entry-list"></div>
+      <noscript><p>请启用 JavaScript 以搜索、编辑或导出手记。</p></noscript>
+    </section>
+  </main>
+  <footer class="container"><span data-copy="footerName">Gudiy · 李岳宸</span><a data-copy="footerLink" data-contact-link href="mailto:1137724508@qq.com">给我写信</a></footer>
+  
+  <dialog class="desk-dialog" id="exporter" aria-labelledby="export-title">
+    <form id="export-form">
+      <h2 id="export-title">导出独立展示页</h2>
+      <p>勾选想展示的条目，下载的 HTML 文件可以直接打开，也可以上传到自己的网站。</p>
+      <div id="export-options"></div>
+      <div class="dialog-actions"><button type="button" data-dismiss>取消</button><button type="submit" id="download" class="filled" disabled>下载展示页</button></div>
+    </form>
+  </dialog>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5f8c5d47fdffe8a',t:'MTc5NTUyNzA3Mw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5f8c5d47fdffe8a',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
